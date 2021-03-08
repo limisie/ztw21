@@ -32,8 +32,14 @@ function deactivate_aa_plugin() {
 	AA_Plugin_Deactivator::deactivate();
 }
 
+function uninstall_aa_plugin() {
+	require_once plugin_dir_path( __FILE__ ) . 'uninstall.php';
+	AA_Plugin_Uninstaller::uninstall();
+}
+
 register_activation_hook( __FILE__, 'activate_aa_plugin' );
 register_deactivation_hook( __FILE__, 'deactivate_aa_plugin' );
+register_uninstall_hook(__FILE__, 'uninstall_aa_plugin');
 
 /**
  * Begins execution of the plugin.
@@ -47,3 +53,5 @@ function run_aa_plugin() {
 
 }
 run_aa_plugin();
+
+?>
