@@ -64,9 +64,7 @@ class AA_Plugin_Admin {
 	}
 
 	public function aa_admin_page() {
-		$data = $this->announcements;
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/index.php';
 	}
-
 }
 ?>
