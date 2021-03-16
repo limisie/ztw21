@@ -1,0 +1,23 @@
+%link {
+    color: colors(secondary);
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        color: colors(complementary);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+}
+
+%link-logo {
+    @extend %link;
+    font-size: 2rem;
+}
+
+%link-nav {
+    @extend %link;
+    font-size: 1rem;
+    padding: 0 1rem;
+}

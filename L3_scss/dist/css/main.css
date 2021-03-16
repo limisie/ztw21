@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;900&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #F5F4EE;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-menu__button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.navbar-menu__button {
+  color: #F5F4EE;
+  background-color: #201E58;
+  -webkit-box-shadow: inset -5px -5px #353191;
+          box-shadow: inset -5px -5px #353191;
+  padding-right: 15px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu__button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #e2dfce;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar__logo, .navbar-menu, .navbar-menu__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-menu__button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.navbar-menu__button {
+  color: #F5F4EE;
+  background-color: #201E58;
+  -webkit-box-shadow: inset -5px -5px #353191;
+          box-shadow: inset -5px -5px #353191;
+  padding-right: 15px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu__button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #e2dfce;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar__logo, .navbar__bars, .navbar-menu__link {
+  color: #201E58;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar__logo:hover, .navbar__bars:hover, .navbar-menu__link:hover {
+  color: #EE455D;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar__logo, .navbar__bars {
+  font-size: 2rem;
+}
+
+.navbar-menu__link {
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0.5rem;
+  z-index: 10;
+  position: relative;
+  margin: 0 24px;
+}
+
+.navbar__bars {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__bars {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .navbar__bars {
+    display: block;
+  }
+}
+
+.navbar-menu {
+  list-style: none;
+  text-align: center;
+}
+
+@media screen and (max-width: 280px) {
+  .navbar-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+}
+
+.navbar-menu__button {
+  text-decoration: none;
+}
+
+.top__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=main.css.map */

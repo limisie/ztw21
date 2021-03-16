@@ -1,0 +1,36 @@
+$padding: 10px;
+$border-radius: 10px;
+$font-size: 14px;
+
+%btn {
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    display: block;
+    font-size: $font-size;
+    padding: $padding;
+    text-align: center;
+}
+
+@mixin btn-background($btn-background, $btn-color) {
+    @extend %btn;
+    color: $btn-color;
+    background-color: $btn-background;
+    box-shadow: inset -5px -5px lighten($btn-background, 15%);
+    padding-right: 1.5 * $padding;
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: none;
+        color: darken($btn-color, 10%);
+        transition: all 0.3s ease;
+    }
+}
+
+%main-btn {
+    @include btn-background(colors(secondary), colors(primary));
+}
+
+%cta-btn {
+    @include btn-background(colors(primary), colors(secondary));
+}
