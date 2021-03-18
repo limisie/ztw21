@@ -32,5 +32,5 @@ $font-size: 14px;
 }
 
 %cta-btn {
-    @include btn-background(colors(primary), colors(secondary));
+    @include btn-background(colors(complementary), colors(primary));
 }

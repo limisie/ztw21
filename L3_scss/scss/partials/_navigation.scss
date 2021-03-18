@@ -20,8 +20,8 @@
     }
 
     &__bars {
-        display: none;
         @extend %link-logo;
+        display: none;
 
         @include tablet {
             display: block;
@@ -34,7 +34,6 @@
 
     &-menu {
         @extend %align-center;
-        list-style: none;
         text-align: center;
 
         @include mobile {

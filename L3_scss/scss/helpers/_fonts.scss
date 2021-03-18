@@ -1,0 +1,27 @@
+@mixin font-highlight($font-color, $font-size, $font-weight) {
+    color: $font-color;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: 1.2;
+
+    @include tablet {
+        font-size: $font-size / 2;
+        line-height: 1.5;
+    }
+
+    @include mobile {
+        font-size: $font-size / 3;
+    }
+}
+
+%font-h1 {
+    @include font-highlight(colors(secondary), 4rem, 800);
+}
+
+%font-h2 {
+    @include font-highlight(colors(complementary), 3rem, bold)
+}
+
+%font-p--large {
+    @include font-highlight(colors(secondary), 1.5rem, 500);
+}
