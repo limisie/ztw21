@@ -1,0 +1,12 @@
+html, body, header, .container-fluid, #intro {
+ height: 100%;
+}
+
+.container-fluid {
+    width: 100%;
+}
+
+#intro {
+ background: url("../img/bg.jpg") no-repeat center center fixed;
+ background-size: cover;
+}
