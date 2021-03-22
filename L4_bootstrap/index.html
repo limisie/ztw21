@@ -19,18 +19,15 @@
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- ------------------------------------------------------------- NAVBAR ------------------------------------------------------------- -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <!-- Navbar brand -->
       <a class="navbar-brand" href="#">Navbar</a>
-      <!-- Collapse button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" datatarget="#basicExampleNav"
         aria-controls="basicExampleNav" aria-expanded="false" arialabel="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- Collapsible content -->
       <div class="collapse navbar-collapse" id="basicExampleNav">
-        <!-- Links -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home
@@ -38,22 +35,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#lastTravels">Last Travels</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#gallery">Gallery</a>
           </li>
-          <!-- Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
+              aria-haspopup="true" aria-expanded="false">More</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#chart">Charts</a>
+              <a class="dropdown-item" href="#faq">FAQ</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#contact">Contact us</a>
             </div>
           </li>
         </ul>
@@ -67,9 +61,9 @@
   </nav>
 
 
+  <!-- ------------------------------------------------------------- INTRO ------------------------------------------------------------- -->
   <div id="intro" class="view">
     <div class="mask rgba-black-strong">
-
       <div class="container-fluid d-flex align-items-center justify-content-center h-100">
         <div class="row d-flex justify-content-center text-center">
           <div class="col-md-10">
@@ -85,18 +79,17 @@
       </div>
     </div>
   </div>
-
 </head>
 
 <body>
-
   <main class="mt-5">
-    <div class="container">
-      <!--Section: LastTravels-->
+
+      <!-- ------------------------------------------------------- LAST TRAVELS: grid ----------------------------------------------------- -->
+    <div class="container container-fluid d-flex align-items-center justify-content-center">
       <section id="lastTravels" class="text-center">
         <h4 class="display-4 font-weight-bold my-4">Last travels</h4>
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
           <div class="col-lg-4 col-md-12 mb-4">
             <div class="view overlay z-depth-1-half">
               <img src="img/trip1.jpg" class="img-fluid" alt="">
@@ -131,7 +124,7 @@
               aperiam minima assumenda deleniti hic.</p>
           </div>
         </div>
-        <div class="row">
+        <div class="row d-flex justify-content-center">
           <div class="col-lg-4 col-md-12 mb-4">
             <div class="view overlay z-depth-1-half">
               <img src="img/trip4.jpg" class="img-fluid" alt="">
@@ -170,14 +163,130 @@
     </section>
     <hr class="my-5">
 
+  <!-- ---------------------------------------------- GALLERY: carousel + card + click animation ---------------------------------------------- -->
+    <section id="gallery" class="text-center">
+      <h4 class="display-4 font-weight-bold my-4">Gallery</h4>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container" align="center">
+              <div class="row">
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="view overlay z-depth-1-half">
+                      <img class="card-img-top" src="img/trip7.jpg" alt="Card image cap">
+                      <a href="#!">
+                        <div class="mask rgba-black-light"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="view overlay z-depth-1-half">
+                      <img class="card-img-top" src="img/trip8.jpg" alt="Card image cap">
+                      <a href="#!">
+                        <div class="mask rgba-black-light"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    </div>
+                  </div>
+                </div>
 
-    <section id="gallery">
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="view overlay z-depth-1-half">
+                      <img class="card-img-top" src="img/trip9.jpg" alt="Card image cap">
+                      <a href="#!">
+                        <div class="mask rgba-black-light"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="container" align="center">
+              <div class="row">
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="view overlay z-depth-1-half">
+                      <img class="card-img-top" src="img/trip10.jpg" alt="Card image cap">
+                      <a href="#!">
+                        <div class="mask rgba-black-light"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="view overlay z-depth-1-half">
+                      <img class="card-img-top" src="img/trip11.jpg" alt="Card image cap">
+                      <a href="#!">
+                        <div class="mask rgba-black-light"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="view overlay z-depth-1-half">
+                      <img class="card-img-top" src="img/trip12.jpg" alt="Card image cap">
+                      <a href="#!">
+                        <div class="mask rgba-black-light"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <i class="fas fa-chevron-left black-text"></i>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <i class="fas fa-chevron-right black-text"></i>
+        </a>
+      </div>
     </section>
-    <hr class="my-5">
 
 
-
+  <!-- ---------------------------------------------- CONTACT: grid + form + google ---------------------------------------------- -->
     <section id="contact" class="bg-dark">
       <div class="container-fluid d-flex align-items-center justify-content-center">
         <div class="row d-flex justify-content-center text-center">
@@ -224,8 +333,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="md-form">
-                    <textarea type="text" id="message" name="message" rows="3"
-                      class="form-control md-textarea"></textarea>
+                    <textarea type="text" id="message" name="message" rows="3" class="form-control md-textarea"></textarea>
                     <label for="message">Your message</label>
                   </div>
                 </div>
@@ -240,9 +348,9 @@
 
           <div class="col-lg-6 col-md-6 my-4 px-0">
             <div class="container-fluid px-3">
-                <iframe
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Wroclaw"
-                  width="510" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Wroclaw"
+                width="510" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
 
