@@ -21,7 +21,7 @@ public class AuthorService {
     }
 
     public void addAuthor(Author author) {
-        authorRepository.save(author);
+        authorRepository.saveAndFlush(author);
     }
 
     public Optional<Author> getAuthorById(Long id) {

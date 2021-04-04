@@ -8,15 +8,15 @@ import javax.persistence.*;
 @Table(name = "book")
 public class Book {
 
-    @Id
-    @Column(
-            name = "book_id",
-            updatable = false
-    )
     @SequenceGenerator(
             name = "book_sequence",
             sequenceName = "book_sequence",
             allocationSize = 1
+    )
+    @Id
+    @Column(
+            name = "book_id",
+            updatable = false
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
