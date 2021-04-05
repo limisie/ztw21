@@ -16,8 +16,8 @@ public class RegistrationService {
         this.userService = userService;
     }
 
-    public String register(RegistrationRequest request) {
-        return userService.signUpUser(
+    public void register(RegistrationRequest request) {
+        userService.signUpUser(
                 new User(request.getUsername(),
                         request.getPassword(),
                         UserRole.USER)

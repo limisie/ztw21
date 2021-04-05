@@ -9,8 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 @Getter
 @Setter
@@ -38,6 +37,12 @@ public class User implements UserDetails {
     private UserRole userRole;
     private Boolean locked;
     private Boolean enabled;
+
+//    @OneToMany(
+//            mappedBy = "user",
+//            cascade = CascadeType.ALL
+//    )
+//    private List<Rent> rentedBooks = new ArrayList<>();
 
     public User(String username, String password, UserRole userRole) {
         this.username = username;

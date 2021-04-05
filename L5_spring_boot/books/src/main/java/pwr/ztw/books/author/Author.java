@@ -1,8 +1,6 @@
 package pwr.ztw.books.author;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -23,11 +21,11 @@ public class Author {
             generator = "author_sequence"
     )
 
-    private final Long id = 1L;
+    private final Long id = 0L;
     @NotEmpty
-    private final String name;
+    private String name;
     @NotEmpty
-    private final String surname;
+    private String surname;
 
     public Author(@JsonProperty("name") String name,
                   @JsonProperty("surname") String surname) {
@@ -50,5 +48,13 @@ public class Author {
 
     public Long getId() {
         return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

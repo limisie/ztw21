@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pwr.ztw.books.user.UserService;
-import pwr.ztw.books.user.security.PasswordEncoder;
 
 @Configuration
 @AllArgsConstructor
@@ -25,9 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/registration/**")
-                .permitAll()
-        .anyRequest().authenticated().and().formLogin();
+                .antMatchers("/registration/**", "/book/**", "/author/**").permitAll()
+                .anyRequest().authenticated().and().formLogin();
     }
 
     @Override

@@ -3,7 +3,7 @@ package pwr.ztw.books.book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pwr.ztw.books.author.Author;
-import pwr.ztw.books.author.AuthorRepository;
+import pwr.ztw.books.author.AuthorService;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,12 +12,12 @@ import java.util.Optional;
 public class BookService {
 
     private final BookRepository bookRepository;
-    private final AuthorRepository authorRepository;
+    private final AuthorService authorService;
 
     @Autowired
-    public BookService(BookRepository bookRepository, AuthorRepository authorRepository) {
+    public BookService(BookRepository bookRepository, AuthorService authorService) {
         this.bookRepository = bookRepository;
-        this.authorRepository = authorRepository;
+        this.authorService = authorService;
     }
 
     public List<Book> getBooks() {
@@ -25,9 +25,24 @@ public class BookService {
     }
 
     public void addBook(Book book) {
-        Optional<Author> author = authorRepository.findById(book.getAuthor().getId());
-        author.ifPresent(book::setAuthor);
-        bookRepository.saveAndFlush(book);
+        String authorName = book.getAuthor().getName();
+        String authorSurname = book.getAuthor().getSurname();
+        Long authorId = book.getAuthor().getId();
+
+        Optional<Author> author = null;
+        if (authorId != 0) {
+            author = authorService.getAuthorById(authorId);
+        } else if (authorName != null && authorSurname != null) {
+            author = authorService.getAuthorByNameAndSurname(authorName, authorSurname);
+        }
+
+        if (author.isPresent()) {
+            book.setAuthor(author.get());
+        } else {
+            Author newAuthor = new Author(authorName, authorSurname);
+            book.setAuthor(newAuthor);
+        }
+        bookRepository.save(book);
     }
 
     public Optional<Book> getBookById(Long id) {
@@ -37,9 +52,9 @@ public class BookService {
     public void updateBook(Long id, Book book) {
         Optional<Book> bookToUpdate = bookRepository.findById(id);
         if (book.getAuthor() != null && bookToUpdate.isPresent()) {
-            Optional<Author> author = authorRepository.findById(book.getAuthor().getId());
+            Optional<Author> author = authorService.getAuthorById(book.getAuthor().getId());
             author.ifPresent(a -> bookToUpdate.get().setAuthor(a));
-            bookRepository.saveAndFlush(bookToUpdate.get());
+            bookRepository.save(bookToUpdate.get());
         }
     }
 
