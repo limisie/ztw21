@@ -24,12 +24,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/registration/**", "/book/**", "/author/**").permitAll()
+                .antMatchers("/registration/**", "/book/**", "/author/**", "/swagger-ui.html/**").permitAll()
                 .anyRequest().authenticated().and().formLogin();
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
