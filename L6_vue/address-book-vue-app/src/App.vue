@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <div class="app-tile">
+    <div id="nav" class="app-tile nav">
+      <router-link to="/" class="nav__link">Home</router-link>
+      <router-link to="/books" class="nav__link">Ksiazki</router-link>
+      <router-link to="/authors" class="nav__link">Autorzy</router-link>
+      <router-link to="/friends" class="nav__link">Znajomi</router-link>
+    </div>
+    <router-view></router-view>
+    <!-- <div class="app-tile">
       <div class="app-tile__books">
-        <books :booksSource="books" :authorsSource="authors" />
+        <books />
       </div>
     </div>
     <div class="app-tile">
       <div class="app-tile__authors">
-        <authors :authorsSource="authors" />
+        <authors />
       </div>
     </div>
 
@@ -15,47 +22,22 @@
       <div class="app-tile__persons">
         <persons />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import Persons from "@/components/Persons";
-import Books from "@/components/Books";
-import Authors from "@/components/Authors";
-import axios from "axios";
+// import Persons from "@/Persons";
+// import Books from "@/Books";
+// import Authors from "@/Authors";
 
 export default {
   name: "App",
-  components: {
-    Persons,
-    Books,
-    Authors,
-  },
-  data() {
-    return {
-      books: [],
-      authors: [],
-    };
-  },
-  created() {
-    axios
-      .get(`http://localhost:8080/book`)
-      .then((response) => {
-        this.books = response.data;
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
-    axios
-      .get(`http://localhost:8080/author`)
-      .then((response) => {
-        this.authors = response.data;
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
-  },
+  // components: {
+  //   Persons,
+  //   Books,
+  //   Authors,
+  // },
 };
 </script>
 
@@ -77,6 +59,27 @@ export default {
   background-color: white;
   box-shadow: #eeeeee 0 0 10px;
 }
+.nav {
+  display: flex;
+  justify-content: flex-start;
+}
+.nav__link {
+  padding: 0 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.nav__link:hover {
+  text-decoration: none;
+  color: #3b5269;
+}
+
+.nav__link:focus {
+  text-decoration: none;
+  color: #3b5269;
+}
+
 h1 {
   margin: 0 0 20px 0;
 }

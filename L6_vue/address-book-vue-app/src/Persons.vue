@@ -1,15 +1,17 @@
 <template>
   <div id="persons">
-    <h1>Znajomi</h1>
+    <div class="app-tile">
+      <h1>Znajomi</h1>
 
-    <person-form @add:person="addPerson" />
-    <persons-table :personsSource="persons" />
+      <person-form @add:person="addPerson" />
+      <persons-table :personsSource="persons" />
+    </div>
   </div>
 </template>
 
 <script>
-import PersonsTable from "./PersonsTable.vue";
-import PersonForm from "./PersonForm.vue";
+import PersonsTable from "./components/PersonsTable.vue";
+import PersonForm from "./components/PersonForm.vue";
 
 export default {
   name: "Persons",
