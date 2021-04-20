@@ -1,37 +1,37 @@
+
 <template>
-  <div id="person-form">
+  <div id="books-form">
     <form @submit.prevent="handleSubmit">
-      <label>Imię i nazwisko</label>
+      <label>Title</label>
       <input
-        v-model="person.name"
+        v-model="book.title"
         type="text"
-        :class="{ 'has-error': submitting && invalidName }"
-        @focus="clearStatus"
-        @keypress="clearStatus"
+        :class="{ 'has-error': submitting && invalidTitle }"
       />
       <div class="inputs__form">
         <div class="inputs__item">
-          <label>Email</label>
-          <input
-            v-model="person.email"
-            type="text"
-            :class="{ 'has-error': submitting && invalidEmail }"
-            @focus="clearStatus"
-          />
+          <label for="authorSelector">Author</label>
+          <select id="authorSelector" v-model="book.author.id">
+            <option
+              :value="author.id"
+              v-for="author in authorsSource"
+              :key="author.id"
+            >
+              {{ author.name }} {{ author.surname }}
+            </option>
+          </select>
         </div>
         <div class="inputs__item">
-          <label>Telefon</label>
+          <label>Pages</label>
           <input
-            v-model="person.phone"
+            v-model="book.pages"
             type="text"
-            :class="{ 'has-error': submitting && invalidPhone }"
-            @focus="clearStatus"
-            @keypress="clearStatus"
+            :class="{ 'has-error': submitting && invalidPages }"
           />
         </div>
       </div>
 
-      <button>Dodaj kontakt</button>
+      <button>Dodaj ksiąkę</button>
       <p v-if="error && submitting" class="error-message">
         Proszę wypełnić wskazane pola formularza
       </p>
@@ -39,18 +39,25 @@
     </form>
   </div>
 </template>
+
+
 <script>
 export default {
-  name: "person-form",
+  name: "books-form",
+  props: {
+    authorsSource: Array,
+  },
   data() {
     return {
       submitting: false,
       error: false,
       success: false,
-      person: {
-        name: "",
-        email: "",
-        phone: "",
+      book: {
+        title: "",
+        author: {
+          id: 0,
+        },
+        pages: 0,
       },
     };
   },
@@ -59,16 +66,17 @@ export default {
       this.submitting = true;
       this.clearStatus();
 
-      if (this.invalidName || this.invalidEmail || this.invalidPhone) {
+      if (this.invalidTitle) {
         this.error = true;
         return;
       }
-      this.$emit("add:person", this.person);
+      this.$emit("add:book", this.book);
+      location.reload();
 
-      this.person = {
-        name: "",
-        email: "",
-        phone: "",
+      this.book = {
+        title: "",
+        author: 0,
+        pages: 0,
       };
 
       this.error = false;
@@ -82,18 +90,16 @@ export default {
     },
   },
   computed: {
-    invalidName() {
-      return this.person.name === "";
+    invalidTitle() {
+      return this.book.title === "";
     },
-    invalidEmail() {
-      return this.person.email === "";
-    },
-    invalidPhone() {
-      return this.person.phone === "";
+    invalidPages() {
+      return isNaN(parseInt(this.book.pages));
     },
   },
 };
 </script>
+
 <style scoped>
 .inputs__form {
   display: flex;
@@ -115,6 +121,7 @@ select {
   border: dotted #dfe3e8 1px;
   border-radius: 3px;
   padding: 3px;
+  height: 27px;
 }
 
 label {

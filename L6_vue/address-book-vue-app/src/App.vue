@@ -1,55 +1,103 @@
 <template>
-  <div id="app" class="small-container">
-    <h1>Znajomi</h1>
+  <div id="app">
+    <div class="app-tile">
+      <div class="app-tile__books">
+        <books :booksSource="books" :authorsSource="authors" />
+      </div>
+    </div>
+    <div class="app-tile">
+      <div class="app-tile__authors">
+        <authors :authorsSource="authors" />
+      </div>
+    </div>
 
-    <person-form @add:person="addPerson" />
-    <persons-table :personsSource="persons" />
+    <div class="app-tile">
+      <div class="app-tile__persons">
+        <persons />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import PersonsTable from "./components/PersonsTable.vue";
-import PersonForm from "./components/PersonForm.vue";
+import Persons from "@/components/Persons";
+import Books from "@/components/Books";
+import Authors from "@/components/Authors";
+import axios from "axios";
 
 export default {
   name: "App",
   components: {
-    PersonsTable,
-    PersonForm,
+    Persons,
+    Books,
+    Authors,
   },
   data() {
     return {
-      persons: [],
+      books: [],
+      authors: [],
     };
   },
-  methods: {
-    addPerson(person) {
-      this.persons = [...this.persons, person];
-    },
-    async getPersons() {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        const data = await response.json();
-        this.persons = data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
-  mounted() {
-    this.getPersons();
+  created() {
+    axios
+      .get(`http://localhost:8080/book`)
+      .then((response) => {
+        this.books = response.data;
+      })
+      .catch((e) => {
+        this.errors.push(e);
+      });
+    axios
+      .get(`http://localhost:8080/author`)
+      .then((response) => {
+        this.authors = response.data;
+      })
+      .catch((e) => {
+        this.errors.push(e);
+      });
   },
 };
 </script>
 
 <style>
-button {
-  background: #009435;
-  border: 1px solid #009435;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin-top: 60px;
 }
-.small-container {
-  max-width: 680px;
+.app-tile {
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 30px;
+  width: 60%;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: #eeeeee 0 0 10px;
+}
+h1 {
+  margin: 0 0 20px 0;
+}
+button {
+  padding: 5px;
+  margin: 0;
+  background-color: #2c3e50;
+  border-radius: 3px;
+  border: none;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: medium;
+}
+button:hover {
+  background-color: #3b5269;
+  border: none;
+}
+
+button:focus {
+  background-color: #3b5269;
+  border: none;
 }
 </style>

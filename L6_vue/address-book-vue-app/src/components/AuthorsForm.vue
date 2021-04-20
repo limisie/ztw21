@@ -1,37 +1,25 @@
 <template>
-  <div id="person-form">
+  <div id="authors-form">
     <form @submit.prevent="handleSubmit">
-      <label>Imię i nazwisko</label>
-      <input
-        v-model="person.name"
-        type="text"
-        :class="{ 'has-error': submitting && invalidName }"
-        @focus="clearStatus"
-        @keypress="clearStatus"
-      />
       <div class="inputs__form">
         <div class="inputs__item">
-          <label>Email</label>
+          <label>Imię</label>
           <input
-            v-model="person.email"
+            v-model="author.name"
             type="text"
-            :class="{ 'has-error': submitting && invalidEmail }"
-            @focus="clearStatus"
+            :class="{ 'has-error': submitting && invalidName }"
           />
         </div>
         <div class="inputs__item">
-          <label>Telefon</label>
+          <label>Nazwisko</label>
           <input
-            v-model="person.phone"
+            v-model="author.surname"
             type="text"
-            :class="{ 'has-error': submitting && invalidPhone }"
-            @focus="clearStatus"
-            @keypress="clearStatus"
+            :class="{ 'has-error': submitting && invalidSurname }"
           />
         </div>
       </div>
-
-      <button>Dodaj kontakt</button>
+      <button>Dodaj autora</button>
       <p v-if="error && submitting" class="error-message">
         Proszę wypełnić wskazane pola formularza
       </p>
@@ -39,18 +27,19 @@
     </form>
   </div>
 </template>
+
+
 <script>
 export default {
-  name: "person-form",
+  name: "authors-form",
   data() {
     return {
       submitting: false,
       error: false,
       success: false,
-      person: {
+      author: {
         name: "",
-        email: "",
-        phone: "",
+        surname: "",
       },
     };
   },
@@ -59,16 +48,16 @@ export default {
       this.submitting = true;
       this.clearStatus();
 
-      if (this.invalidName || this.invalidEmail || this.invalidPhone) {
+      if (this.invalidName || this.invalidSurname) {
         this.error = true;
         return;
       }
-      this.$emit("add:person", this.person);
+      this.$emit("add:author", this.author);
+      location.reload();
 
-      this.person = {
+      this.author = {
         name: "",
-        email: "",
-        phone: "",
+        surname: "",
       };
 
       this.error = false;
@@ -83,17 +72,15 @@ export default {
   },
   computed: {
     invalidName() {
-      return this.person.name === "";
+      return this.author.name === "";
     },
-    invalidEmail() {
-      return this.person.email === "";
-    },
-    invalidPhone() {
-      return this.person.phone === "";
+    invalidSurname() {
+      return this.author.surname === "";
     },
   },
 };
 </script>
+
 <style scoped>
 .inputs__form {
   display: flex;
@@ -115,6 +102,7 @@ select {
   border: dotted #dfe3e8 1px;
   border-radius: 3px;
   padding: 3px;
+  height: 27px;
 }
 
 label {
