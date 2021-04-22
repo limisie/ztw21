@@ -38,12 +38,6 @@ public class User implements UserDetails {
     private Boolean locked;
     private Boolean enabled;
 
-//    @OneToMany(
-//            mappedBy = "user",
-//            cascade = CascadeType.ALL
-//    )
-//    private List<Rent> rentedBooks = new ArrayList<>();
-
     public User(String username, String password, UserRole userRole) {
         this.username = username;
         this.password = password;
