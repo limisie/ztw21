@@ -1,0 +1,40 @@
+type Todo {
+    id: ID!
+    title: String!
+    completed: Boolean!
+    createdAt: String!
+    user: User!
+}
+
+type User {
+    id: ID!
+    login: String!
+    email: String!
+    createdAt: String!
+    token: String!
+    todos: [Todo]!
+}
+
+input newUser {
+    login: String!
+    password: String!
+    confirmPassword: String!
+    email: String!
+}
+
+type Query {
+    demo: String!
+    todos: [Todo]
+    users: [User]
+    user(id: ID!): User
+    todo(id: ID!): Todo
+}
+
+type Mutation {
+    register(newUser: newUser): User!
+    login(login: String!, password:String!): User!
+    deleteMyAccount: String!
+    createTodo(title: String!): Todo!
+    deleteTodo(id: ID!): String!
+    completeTodo(id: ID!): Todo!
+}
