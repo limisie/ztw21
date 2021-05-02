@@ -11,7 +11,7 @@ type User {
     login: String!
     email: String!
     createdAt: String!
-    token: String!
+    token: String
     todos: [Todo]!
 }
 
