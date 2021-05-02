@@ -1,0 +1,60 @@
+@mixin font-highlight($font-color, $font-size, $font-weight) {
+    color: $font-color;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: 1.2;
+
+    @include tablet {
+        font-size: $font-size / 2;
+        line-height: 1.5;
+    }
+
+    @include mobile {
+        font-size: $font-size / 3;
+    }
+}
+
+%font-h1 {
+    @include font-highlight(colors(secondary), 3.5rem, 800);
+    padding: 15px 0;
+}
+
+%font-h2 {
+    @include font-highlight(colors(complementary), 3rem, bold);
+}
+
+%font-h4 {
+    @include font-highlight(colors(secondary), 1.6rem, 500);
+
+    @include tablet {
+    @include font-highlight(colors(secondary), 2.5rem, 500);
+}
+}
+
+%font-date {
+    @include font-highlight(colors(complementary), 0.7rem, 600);
+
+    @include tablet {
+        @include font-highlight(colors(complementary), 1.5rem, 600);
+    }
+}
+
+%font-p--large {
+    @include font-highlight(colors(secondary), 1.5rem, 500);
+}
+
+%font-p {
+    @include font-highlight(colors(secondary), 1rem, 300);
+
+    @include tablet {
+        @include font-highlight(colors(secondary), 2rem, 300);
+    }
+}
+
+%font-p--small {
+    @include font-highlight(colors(secondary), 0.8rem, 300);
+
+    @include tablet {
+        @include font-highlight(colors(secondary), 1.6rem, 300);
+    }
+}

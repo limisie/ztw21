@@ -1,0 +1,61 @@
+@import '../helpers/functions';
+@import '../helpers/helpers';
+@import '../helpers/mixins';
+@import '../components/buttons';
+@import '../components/links';
+
+
+.navbar {
+    display: flex;
+    top: 0;
+    left: 100px;
+    right: 100px;
+    height: 80px;
+
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 10;
+    background-color: colors(primary);
+
+    &__logo  {
+        @extend %align-center;
+        @extend %link-logo;
+    }
+
+    &__bars {
+        @extend %link-logo;
+        display: none;
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &-menu {
+        @extend %align-center;
+        text-align: center;
+
+        @include tablet {
+            display: none !important;
+        }
+
+        &__link {
+            @extend %align-center;
+            @extend %link-nav;
+        }
+
+        &__button {
+            @extend %main-btn;
+            text-decoration: none;
+        }
+    }
+
+    @include tablet {
+        top: 0;
+        left: 24px;
+        right: 24px;
+        height: 80px;
+    }
+}

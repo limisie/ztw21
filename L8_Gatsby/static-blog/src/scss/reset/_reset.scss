@@ -1,0 +1,42 @@
+@import '../helpers/functions';
+@import '../helpers/mixins';
+@import '../helpers/fonts';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: colors(secondary);
+    background-color: colors(primary);
+
+    margin: 100px 100px 0 100px;
+    width: calc(100% - 200px);
+
+    h1 {
+        @extend %font-h1;
+    }
+
+    &-mark {
+        @extend %font-h2;
+    }
+
+    p {
+        @extend %font-p;
+    }
+
+    &-btn {
+        @extend %cta-btn;
+        justify-self: end;
+        margin: 1rem 0;
+    }
+
+    @include tablet {
+        margin: 100px 24px 0 24px;
+        width: calc(100% - 48px);
+    }
+}

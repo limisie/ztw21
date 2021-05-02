@@ -1,0 +1,39 @@
+@import '../helpers/functions';
+@import '../helpers/helpers';
+@import '../helpers/mixins';
+@import '../components/buttons';
+@import '../components/links';
+
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        padding: 10px 0;
+    }
+
+    .post {
+        border-bottom: 1px rgba(colors(secondary), 0.2) dotted;
+        padding: 30px 0;
+    }
+
+    .date {
+        @extend %font-date;
+    }
+
+    .title {
+        @extend %font-h4;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        p {
+            @extend %font-p--small;
+        }
+    }
+}
